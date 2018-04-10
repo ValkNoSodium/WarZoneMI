@@ -1,0 +1,118 @@
+@font-face {
+    font-family: 'Armalite Rifle';
+    src: url('../fonts/armalite.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    background: url('../img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.title {
+    font-size: 125px;
+    background: -webkit-linear-gradient(#c0392b, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 4px 4px 2px #e74c3c;
+    font-family: 'Armalite Rifle';
+}
+
+.div-menu-bg {
+    background: url('../img/menu.jpg') no-repeat;
+    background-size: 100% 100%;
+    width: 700px;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin: auto;
+}
+
+.menu-option-bg {
+    background-image: url("../img/metal-texture.jpg");
+    width: 500px;
+    margin-left: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    border: solid gray;
+}
+
+.menu-option-text {
+    text-shadow: 4px 4px 2px white;
+    color: black;
+    font-family: 'Armalite Rifle';
+    font-size: 30px;
+}
+
+.game-ui-pause {
+    text-shadow: 4px 4px 2px black;
+    color: white;
+    font-family: 'Armalite Rifle';
+    font-size: 100px;
+}
+
+.menu-option-button {
+    font-family: 'Armalite Rifle';
+    font-size: 20px;
+}
+
+.table-score-text {
+    color: white;
+    text-shadow: 4px 4px 2px black;
+    font-family: 'Armalite Rifle';
+    font-size: 25px;
+}
+
+.table-score-header {
+    color: black;
+    text-shadow: 4px 4px 2px white;
+    font-family: 'Armalite Rifle';
+    font-size: 25px;
+}
+
+.game-border {
+    background-image: url("../img/danger-texture.jpg");
+    margin: auto;
+    width: 640px;
+    height: 10px;
+}
+
+#game-ui {
+    background-image: url("../img/metal-texture.jpg");
+    margin: auto;
+    width: 640px;
+    height: 70px;
+}
+
+.game-ui-life {
+    margin-left: 5px;
+    height: 30px;
+    width: 500px;
+    border: solid black;
+    float: left;
+}
+
+#life-bar {
+    height: 100%;
+    width: 76%;
+    background: url('../img/blood.png') repeat;
+}
+
+.modal {
+    text-align: center;
+    padding: 0!important;
+}
+
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}

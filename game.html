@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>WarZone</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/ui-style.css">.
+    </head>
+    <body>
+        <script src="js/tools.js"></script>
+        <script src="js/three.js"></script>
+        <script src="js/loaders/FBXLoader.js"></script>
+        <script src="js/inflate.min.js"></script>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/Bullet.js"></script>
+        <script src="js/player.js"></script>
+        <script src="js/KeyboardState.js"></script>
+        <script src="js/Resources.js"></script>
+        <script src="js/Enemy.js"></script>
+        <script src="js/game.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <div class="container">
+            <h1 class="title text-center" style="margin-top: 0px; padding-top: 0px;">WarZone</h1>
+            <div class="div-menu-bg" id="div-login">
+                <form style="margin-left: 5%; margin-right: 5%">
+                    <div class="form-group">
+                        <label class="menu-option-text" for="txtUser">Usuario</label>
+                        <input type="text" class="form-control" placeholder="Usuario" id="txtUser">
+                    </div>
+                    <div class="form-group">
+                        <label class="menu-option-text" for="txtGame">Partida</label>
+                        <input type="number" class="form-control" placeholder="###" id="txtGame">
+                    </div>
+                    <button id="btnConnect" type="button" class="btn btn-success menu-option-button">
+                        Entrar
+                    </button>
+                    <a class="btn btn-default menu-option-button" role="button" href="index.html">Volver</a>
+                </form>
+            </div>
+
+            <div id="div-game" hidden>
+                <div class="game-border"></div>
+                <div id="game-viewport" style="margin: auto;width: 640px;height: 480px;">
+                </div>
+                <div id="game-ui">
+                    <label id="lblUser" class="menu-option-text" style="font-size: 20px; margin-left: 5px;"></label>
+                    <label class="menu-option-text" style="font-size: 20px; margin-left: 50px">SCORE</label>
+                    <label class="menu-option-text" style="font-size: 20px; color: red;">7000</label><br>
+                    <label class="menu-option-text" style="font-size: 20px; margin-left: 5px; margin-right: 5px; float: left">SALUD</label>
+                    <div class="game-ui-life">
+                        <div id="life-bar"></div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body text-center game-ui-pause" style="background-color: black;">
+                                    pausa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-border"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var socket;
+            var tokenId = "";
+            var userName = "";
+            $(document).ready(function () {
+                $("#btnConnect").click(function () {
+                    var userId = $("#txtUser").val();
+                    var gameId = $("#txtGame").val();
+                    var delta = JSON.stringify({
+                        messageType: "connect",
+                        userId: userId,
+                        game: gameId
+                    });
+                    socket = new WebSocket("ws://localhost:52604/websockethandler.ashx");
+                    socket.onopen = function () {
+                        socket.send(delta);
+                    };
+                    socket.onmessage = function (event) {
+                        var data = JSON.parse(event.data);
+                        if(data.messageType == "validation") {
+                            if(data.tokenId != "") {
+                                tokenId = data.tokenId;
+                                userName = data.userId;
+                                $("#lblUser").text(userName);
+                            }
+                        }
+                    };
+                    $("#div-login").hide();
+                    $("#div-game").show();
+                    loadResources();
+                    gameInit();
+                });
+            });
+        </script>
+    </body>
+</html>
