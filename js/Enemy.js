@@ -15,7 +15,7 @@ function Enemy() {
             emissive: 0x072534,
             side: THREE.DoubleSide,
             flatShading: true
-        } )
+        } );
         this.Mesh = new THREE.Mesh(geometry, material);
         //NÚMERO ALEATORIO ENTRE 1 Y 10
         var posX = Math.floor((Math.random() * 10) + 1);

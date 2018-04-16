@@ -24716,7 +24716,7 @@
 
 								distance: distance,
 								// What do we want? intersection point on the ray or on the segment??
-								// point: raycaster.ray.at( distance ),
+								// point: raycasterEnemies.ray.at( distance ),
 								point: interSegment.clone().applyMatrix4( this.matrixWorld ),
 								index: i,
 								face: null,
@@ -24748,7 +24748,7 @@
 
 								distance: distance,
 								// What do we want? intersection point on the ray or on the segment??
-								// point: raycaster.ray.at( distance ),
+								// point: raycasterEnemies.ray.at( distance ),
 								point: interSegment.clone().applyMatrix4( this.matrixWorld ),
 								index: i,
 								face: null,
@@ -24782,7 +24782,7 @@
 
 							distance: distance,
 							// What do we want? intersection point on the ray or on the segment??
-							// point: raycaster.ray.at( distance ),
+							// point: raycasterEnemies.ray.at( distance ),
 							point: interSegment.clone().applyMatrix4( this.matrixWorld ),
 							index: i,
 							face: null,
@@ -44654,7 +44654,7 @@
 
 		this.pickingRay = function () {
 
-			console.error( 'THREE.Projector: .pickingRay() is now raycaster.setFromCamera().' );
+			console.error( 'THREE.Projector: .pickingRay() is now raycasterEnemies.setFromCamera().' );
 
 		};
 
